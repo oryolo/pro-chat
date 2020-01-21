@@ -1,8 +1,7 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<%= render "devise/shared/error_messages", resource: resource %>
-<%= render partial: "shared/validation_message", collection: @room.errors.full_messages, as: :error_message %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource, as: :error_message %>
 
 <div class="field">
   <%= f.label :email, class: "label" %><br />

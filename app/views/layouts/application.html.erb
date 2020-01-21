@@ -12,10 +12,28 @@
 </head>
 
 <body>
-  <%= render 'layouts/navigation' %>
+  <%= render 'devise/shared/navigation' %>
   <section class="section">
     <div class="container">
-      
+      <%- flash.each do |type, msg| -%>
+      <% if type == "alert" %>
+      <div class="message is-danger">
+        <div class="message-header">
+          <%= type.capitalize %>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body"><%= msg %></div>
+      </div>
+      <% elsif type == 'notice' %>
+      <%= content_tag :div, class: "message is-success" do %>
+      <div class="message-header">
+        <%= type.capitalize %>
+        <button class="delete" aria-label="delete"></button>
+      </div>
+      <div class="message-body"><%= msg %></div>
+      <% end %>
+      <% end %>
+      <%- end -%>
       <%= yield %>
     </div>
   </section>

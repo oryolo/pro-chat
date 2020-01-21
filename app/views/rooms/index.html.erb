@@ -1,16 +1,5 @@
 <div class="columns">
-  <div class="column is-one-third">
-    <%= link_to "New Room", new_room_path, class: "button is-success" %>
-    <% if @rooms.present? %>
-    <% @rooms.each do |room| %>
-    <div class="list is-hoverable">
-      <%= link_to room.name, room_path(room), class: "list-item" %>
-    </div>
-    <% end %>
-    <% else %>
-    <p class="is-italic">There are no rooms</p>
-    <% end %>
-  </div>
+  <%= render 'rooms' %>
   <div class="column">
     <div class="box chatbox">
       Start chatting with your friend

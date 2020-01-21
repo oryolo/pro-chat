@@ -1,0 +1,49 @@
+<div class="columns">
+  <%= render 'rooms' %>
+  <div class="column">
+    <%= @room.name %>
+    <div class="box chatbox" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+      <% @room_messages.each do |msg| %>
+      <div class="columns">
+        <div class="column is-one-fifth">
+          <%= msg.user[:username]%>
+        </div>
+        <div class="column"><%= msg.message %></div>
+      </div>
+      <% end %>
+      <div class="d-none" data-role="message-template">
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+            <div class="col-auto text-center">
+              <img src="" class="avatar" alt="" data-role="user-avatar">
+            </div>
+      
+            <div class="col">
+              <div class="message-content">
+                <p class="mb-1" data-role="message-text"></p>
+      
+                <div class="text-right">
+                  <small data-role="message-date"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= form_for @room_message do |f| %>
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <%= f.text_field :message, class: "input" %>
+      </div>
+      <div class="control">
+        <%= f.hidden_field :room_id %>
+      </div>
+      <div class="control">
+        <%= f.submit "Submit", class: "button is-primary" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+

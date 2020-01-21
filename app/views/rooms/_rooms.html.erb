@@ -1,0 +1,14 @@
+<div class="column is-one-third">
+  <div class="buttons">
+    <%= link_to "New Room", new_room_path, class: "button is-success" %>
+  </div>
+  <% if @rooms.present? %>
+  <div class="list">
+    <% @rooms.each do |room| %>
+    <%= link_to room.name, room_path(room), class: "list-item" %>
+    <% end %>
+  </div>
+  <% else %>
+  <p class="is-italic">There are no rooms</p>
+  <% end %>
+</div>
